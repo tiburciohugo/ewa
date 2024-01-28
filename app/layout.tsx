@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Sidebar />
-        <main>{children}</main>
+        <main className="bg-midnight-blue">{children}</main>
       </body>
     </html>
   );
