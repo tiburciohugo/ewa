@@ -14,7 +14,7 @@ export default function Sidebar() {
         className="inline-block cursor-pointer hover:opacity-80"
       >
         <Image
-          src={"/assets/logo.svg"}
+          src={"/logo.svg"}
           alt="logo"
           width={30}
           height={30}
@@ -48,7 +48,7 @@ export default function Sidebar() {
       </div>
 
       <Image
-        src={"/assets/image-avatar.png"}
+        src={"/image-avatar.png"}
         alt="avatar"
         width={30}
         height={30}
