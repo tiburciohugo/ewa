@@ -6,6 +6,10 @@
   * {
     @apply border-border;
   }
+
+  html {
+    @apply bg-midnight-blue;
+  }
   body {
     @apply bg-background text-foreground;
   }

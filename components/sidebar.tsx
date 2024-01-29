@@ -8,11 +8,8 @@ import BookmarkIcon from "../public/icon-nav-bookmark.svg";
 
 export default function Sidebar() {
   return (
-    <nav className="absolute top-0 flex items-center justify-between w-full p-4 bg-navy-blue lg:flex-col lg:left-0 lg:h-full lg:w-24 lg:max-h-[58rem] lg:ml-4 lg:my-4 lg:rounded-xl">
-      <Link
-        href="/"
-        className="inline-block cursor-pointer hover:opacity-80"
-      >
+    <nav className="absolute top-0 flex w-full items-center justify-between bg-navy-blue p-4 md:max-w-[719px] md:rounded-xl lg:left-0 lg:my-4 lg:ml-4 lg:h-full lg:max-h-[58rem] lg:w-24 lg:flex-col md:m-[3%]">
+      <Link href="/" className="inline-block cursor-pointer hover:opacity-80">
         <Image
           src={"/logo.svg"}
           alt="logo"
@@ -22,26 +19,26 @@ export default function Sidebar() {
         />
       </Link>
 
-      <div className="flex items-center w-full justify-evenly absolute left-0 right-0 mx-auto lg:top-20">
+      <div className="absolute left-0 right-0 mx-auto flex w-full items-center justify-evenly lg:top-20">
         <ul className="flex space-x-4 lg:flex-col lg:justify-center lg:justify-items-center lg:space-x-0 lg:space-y-6">
           <li>
             <Link href="/">
-              <HomeIcon className="text-steel-blue hover:text-white" />
+              <HomeIcon className="text-steel-blue hover:text-white active:text-white" />
             </Link>
           </li>
           <li>
             <Link href={"/movies"}>
-              <MoviesIcon className="text-steel-blue hover:text-white" />
+              <MoviesIcon className="text-steel-blue hover:text-white active:text-white" />
             </Link>
           </li>
           <li>
             <Link href={"/tvseries"}>
-              <TvIcon className="text-steel-blue hover:text-white" />
+              <TvIcon className="text-steel-blue hover:text-white active:text-white" />
             </Link>
           </li>
           <li>
             <Link href={"/bookmarks"}>
-              <BookmarkIcon className="text-steel-blue hover:text-white" />
+              <BookmarkIcon className="text-steel-blue hover:text-white active:text-white" />
             </Link>
           </li>
         </ul>
@@ -52,7 +49,7 @@ export default function Sidebar() {
         alt="avatar"
         width={30}
         height={30}
-        className="border-2 border-white rounded-full"
+        className="rounded-full border-2 border-white"
       />
     </nav>
   );
