@@ -8,7 +8,7 @@ import BookmarkIcon from "../public/icon-nav-bookmark.svg";
 
 export default function Sidebar() {
   return (
-    <nav className="absolute top-0 flex w-full items-center justify-between bg-navy-blue p-4 md:max-w-[719px] md:rounded-xl lg:left-0 lg:my-4 lg:ml-4 lg:h-full lg:max-h-[58rem] lg:w-24 lg:flex-col md:m-[3%]">
+    <nav className="absolute top-0 flex w-full items-center justify-between bg-navy-blue p-4 md:max-w-[719px] md:rounded-xl lg:left-0 lg:my-4 lg:ml-4 lg:h-full lg:max-h-[960px] lg:w-24 lg:flex-col md:m-[3%]">
       <Link href="/" className="inline-block cursor-pointer hover:opacity-80">
         <Image
           src={"/logo.svg"}
