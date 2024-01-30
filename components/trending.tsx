@@ -51,12 +51,12 @@ export default async function Trending() {
   const movies: Movie[] = data.filter((movie) => movie.category === "Movie");
 
   return (
-    <section className="w-full px-4 py-6 text-white md:px-6 lg:pl-32 md:max-w-screen-md">
+    <section className="w-full px-4 py-6 text-white md:px-6 lg:pl-36 md:max-w-screen-md lg:max-w-screen-xl">
       <h1 className="text-xl tracking-wider">Trending</h1>
 
-      <div className="scroll scrollbar-hide mt-4 flex h-full w-full items-center gap-4 overflow-x-scroll scroll-smooth whitespace-nowrap pb-4">
+      <div className="scroll scrollbar-hide mt-4 flex h-full w-full items-center gap-4 lg:gap-10 overflow-x-scroll scroll-smooth whitespace-nowrap pb-4">
         {movies?.map((movie: Movie) => (
-          <div key={movie.title} className="relative space-x-2">
+          <div key={movie.title} className="relative">
             <BookmarkButton />
             <h2 className="absolute bottom-0 left-4 pb-2 pl-2 text-sm font-bold md:text-2xl md:font-light">
               {movie.title}
