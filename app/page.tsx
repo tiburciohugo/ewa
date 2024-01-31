@@ -1,3 +1,4 @@
+import Recommended from "@/components/recommended";
 import Searchbar from "@/components/searchbar";
 import Sidebar from "@/components/sidebar";
 import Trending from "@/components/trending";
@@ -9,18 +10,7 @@ export default function Home() {
       <Sidebar />
       <Searchbar />
       <Trending />
-      <div className="flex h-full w-full flex-col items-center justify-center space-y-4">
-        <Image
-          src={"/logo.svg"}
-          alt="logo"
-          width={100}
-          height={100}
-          className=""
-        />
-        <div className="text-center text-4xl font-bold text-white">
-          Welcome to Movie App
-        </div>
-      </div>
+      <Recommended />
     </section>
   );
 }
