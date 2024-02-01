@@ -9,7 +9,7 @@ import {
 import BookmarkButton from "./ui/bookmarkbutton";
 
 export default async function Trending() {
-  const file = await fs.readFile(process.cwd() + "/data/data.json", "utf8");
+  const file = await fs.readFile(process.cwd() + "../../ewa/data/data.json", "utf8");
   const data: Movie[] = JSON.parse(file);
 
   const movies: Movie[] = data.filter((movie) => movie.isTrending === true);
