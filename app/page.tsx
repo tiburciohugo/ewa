@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <section className="flex h-screen w-screen flex-col">
+    <section className="flex flex-col">
       <Sidebar />
       <Searchbar />
       <Trending />
