@@ -8,7 +8,7 @@ import TvIcon from "../public/icon-nav-tv-series.svg";
 
 export default async function Recommended() {
   const file = await fs.readFile(
-    process.cwd() + "../../ewa/data/data.json",
+    process.cwd() + "/../ewa/data/data.json",
     "utf8",
   );
   const data: Movie[] = JSON.parse(file);
