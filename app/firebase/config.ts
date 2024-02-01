@@ -16,7 +16,7 @@ const db = getFirestore(app);
 
 export const importJSON = async () => {
   try {
-    const data = require("../../data/data.json");
+    const data = require("/../data/data.json");
     for await (const item of data) {
       for (const key in item.thumbnail) {
         for (const subKey in item.thumbnail[key]) {
