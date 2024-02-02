@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { Movie } from "@/app/types/types";
 import {
@@ -7,13 +8,24 @@ import {
 } from "@/components/ui/carousel";
 import BookmarkButton from "./ui/bookmarkbutton";
 import MovieInfo from "./movieInfo";
+import { useEffect, useState } from "react";
+import fetchMovies from "@/lib/fetchMovies";
 
-export default async function Trending() {
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const response = await fetch(`${baseURL}/api/movies`);
-  const data: Movie[] = await response.json();
+export default function Trending() {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-  const movies: Movie[] = data.filter((movie) => movie.isTrending === true);
+  useEffect(() => {
+    async function loadMovies() {
+      const moviesData = await fetchMovies();
+      setMovies(moviesData);
+    }
+
+    loadMovies();
+  }, []);
+
+  const filteredMovies: Movie[] = movies.filter(
+    (movie) => movie.isTrending === true,
+  );
 
   return (
     <section className="px-4 py-6 text-white md:max-w-lg md:px-6 lg:pl-36">
@@ -21,7 +33,7 @@ export default async function Trending() {
 
       <Carousel className=" max-w-screen-2xl sm:w-[380px] md:w-[710px] lg:w-[1000px] xl:w-[1440px]">
         <CarouselContent className="lg:gap-6">
-          {movies?.map((movie: Movie) => (
+          {filteredMovies?.map((movie: Movie) => (
             <CarouselItem key={movie.title}>
               <div className="relative mt-4 flex w-[240px] max-w-[470px] rounded-xl md:w-[470px]">
                 <MovieInfo

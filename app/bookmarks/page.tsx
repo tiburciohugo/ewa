@@ -1,15 +1,25 @@
+"use client";
 import BookmarkButton from "@/components/ui/bookmarkbutton";
 import { Movie } from "../types/types";
 import Image from "next/image";
 import MoviesIcon from "@/public/icon-nav-movies.svg";
 import TvIcon from "@/public/icon-nav-tv-series.svg";
+import fetchMovies from "@/lib/fetchMovies";
+import { useState, useEffect } from "react";
 
-export default async function BookmarkedPage() {
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const response = await fetch(`${baseURL}/api/movies`);
-  const data: Movie[] = await response.json();
+export default function BookmarkedPage() {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-  const bookmarked = data.filter((movie) => movie.isBookmarked === true);
+  useEffect(() => {
+    async function loadMovies() {
+      const moviesData = await fetchMovies();
+      setMovies(moviesData);
+    }
+
+    loadMovies();
+  }, []);
+
+  const bookmarked = movies.filter((movie) => movie.isBookmarked === true);
   return (
     <div className="lg:max-w-xxl w-full px-4 py-6 text-white md:max-w-screen-md md:px-6 lg:pl-36">
       <h1 className="text-xl tracking-wider">Favorites</h1>

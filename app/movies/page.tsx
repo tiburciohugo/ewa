@@ -1,22 +1,34 @@
+"use client";
 import BookmarkButton from "@/components/ui/bookmarkbutton";
 import { Movie } from "../types/types";
 import Image from "next/image";
 import MoviesIcon from "@/public/icon-nav-movies.svg";
 import TvIcon from "@/public/icon-nav-tv-series.svg";
+import fetchMovies from "@/lib/fetchMovies";
+import { useState, useEffect } from "react";
 
-export default async function Movies() {
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-  const response = await fetch(`${baseURL}/api/movies`);
-  const data: Movie[] = await response.json();
+export default function Movies() {
+  const [movies, setMovies] = useState<Movie[]>([]);
 
-  const movies = data.filter((movie) => movie.category === "Movie");
+  useEffect(() => {
+    async function loadMovies() {
+      const moviesData = await fetchMovies();
+      setMovies(moviesData);
+    }
+
+    loadMovies();
+  }, []);
+
+  const filteredMovies: Movie[] = movies.filter(
+    (movie) => movie.category === "Movie",
+  );
 
   return (
     <div className="lg:max-w-xxl w-full px-4 py-6 text-white md:max-w-screen-md md:px-6 lg:pl-36">
       <h1 className="text-xl tracking-wider">Movies</h1>
 
       <div className="grid w-full max-w-[1440px] grid-cols-2 gap-1 md:grid-cols-3 md:gap-4 lg:w-screen lg:grid-cols-4">
-        {movies?.map((movie: Movie) => (
+        {filteredMovies?.map((movie: Movie) => (
           <div key={movie.title} className="relative mt-4 w-full max-w-[280px]">
             <BookmarkButton
               movie={movie}

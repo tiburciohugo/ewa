@@ -5,9 +5,7 @@ if (!process.env.MONGODB_URI) {
 }
 
 const uri: string = String(process.env.MONGODB_URI);
-const options: MongoClientOptions = {
-  // Add specific options here if needed
-};
+const options: MongoClientOptions = {};
 
 let client: MongoClient = new MongoClient(uri, options);
 let clientPromise: Promise<MongoClient> = client.connect();
