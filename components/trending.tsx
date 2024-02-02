@@ -7,9 +7,13 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import BookmarkButton from "./ui/bookmarkbutton";
+import MovieInfo from "./movieInfo";
 
 export default async function Trending() {
-  const file = await fs.readFile(process.cwd() + "/../ewa/data/data.json", "utf8");
+  const file = await fs.readFile(
+    process.cwd() + "/../ewa/data/data.json",
+    "utf8",
+  );
   const data: Movie[] = JSON.parse(file);
 
   const movies: Movie[] = data.filter((movie) => movie.isTrending === true);
@@ -18,11 +22,16 @@ export default async function Trending() {
     <section className="px-4 py-6 text-white md:max-w-lg md:px-6 lg:pl-36">
       <h1 className="text-xl tracking-wider">Trending</h1>
 
-      <Carousel className=" sm:w-[380px] max-w-screen-2xl md:w-[710px] lg:w-[1000px] xl:w-[1440px]">
+      <Carousel className=" max-w-screen-2xl sm:w-[380px] md:w-[710px] lg:w-[1000px] xl:w-[1440px]">
         <CarouselContent className="lg:gap-6">
           {movies?.map((movie: Movie) => (
             <CarouselItem key={movie.title}>
               <div className="relative mt-4 flex w-[240px] max-w-[470px] rounded-xl md:w-[470px]">
+                <MovieInfo
+                  movie={movie}
+                  className="absolute bottom-[17%] left-[10%] text-gray-300 md:bottom-[17%] md:left-[5%]"
+                />
+
                 <BookmarkButton className="left-[85%]" />
                 <h2 className="absolute bottom-0 left-4 pb-2 pl-2 text-sm font-bold md:text-2xl md:font-light">
                   {movie.title}

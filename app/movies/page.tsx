@@ -2,8 +2,8 @@ import BookmarkButton from "@/components/ui/bookmarkbutton";
 import { Movie } from "../types/types";
 import { promises as fs } from "fs";
 import Image from "next/image";
-import MoviesIcon from "../../public/icon-nav-movies.svg";
-import TvIcon from "../../public/icon-nav-tv-series.svg";
+import MoviesIcon from "@/public/icon-nav-movies.svg";
+import TvIcon from "@/public/icon-nav-tv-series.svg";
 
 export default async function Movies() {
   const file = await fs.readFile(
