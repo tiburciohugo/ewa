@@ -37,5 +37,4 @@ next-env.d.ts
 
 data/
 
-# ignore the assets folder inside public
-public/assets/*
+
