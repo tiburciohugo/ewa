@@ -8,6 +8,14 @@ const nextConfig = {
 
     return config;
   },
+  async rewrites() {
+    return [
+      {
+        source: "/assets/thumbnails/:path*",
+        destination: "/public/assets/thumbnails/:path*",
+      },
+    ];
+  },
 };
 
 export default nextConfig;
