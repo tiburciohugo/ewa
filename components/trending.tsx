@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { promises as fs } from "fs";
 import { Movie } from "@/app/types/types";
 import {
   Carousel,
@@ -10,11 +9,9 @@ import BookmarkButton from "./ui/bookmarkbutton";
 import MovieInfo from "./movieInfo";
 
 export default async function Trending() {
-  const file = await fs.readFile(
-    process.cwd() + "/../ewa/data/data.json",
-    "utf8",
-  );
-  const data: Movie[] = JSON.parse(file);
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const response = await fetch(`${baseURL}/api/movies`);
+  const data: Movie[] = await response.json();
 
   const movies: Movie[] = data.filter((movie) => movie.isTrending === true);
 

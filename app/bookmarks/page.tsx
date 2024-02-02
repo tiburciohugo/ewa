@@ -1,16 +1,13 @@
 import BookmarkButton from "@/components/ui/bookmarkbutton";
 import { Movie } from "../types/types";
-import { promises as fs } from "fs";
 import Image from "next/image";
 import MoviesIcon from "@/public/icon-nav-movies.svg";
 import TvIcon from "@/public/icon-nav-tv-series.svg";
 
 export default async function BookmarkedPage() {
-  const file = await fs.readFile(
-    process.cwd() + "/../ewa/data/data.json",
-    "utf8",
-  );
-  const data: Movie[] = JSON.parse(file);
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+  const response = await fetch(`${baseURL}/api/movies`);
+  const data: Movie[] = await response.json();
 
   const bookmarked = data.filter((movie) => movie.isBookmarked === true);
   return (
@@ -20,7 +17,10 @@ export default async function BookmarkedPage() {
       <div className="grid w-full max-w-[1440px] grid-cols-2 gap-1 md:grid-cols-3 md:gap-4 lg:w-screen lg:grid-cols-4">
         {bookmarked?.map((movie: Movie) => (
           <div key={movie.title} className="relative mt-4 w-full max-w-[280px]">
-            <BookmarkButton movie={movie} className="left-[75%] md:left-[80%]" />
+            <BookmarkButton
+              movie={movie}
+              className="left-[75%] md:left-[80%]"
+            />
             <Image
               className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
               src={`/${movie.thumbnail.regular.large}`}
