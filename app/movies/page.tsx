@@ -21,7 +21,7 @@ export default async function Movies() {
       <div className="grid w-full max-w-[1440px] grid-cols-2 gap-1 md:grid-cols-3 md:gap-4 lg:w-screen lg:grid-cols-4">
         {movies?.map((movie: Movie) => (
           <div key={movie.title} className="relative mt-4 w-full max-w-[280px]">
-            <BookmarkButton className="left-[75%] md:left-[80%]" />
+            <BookmarkButton movie={movie} className="left-[75%] md:left-[80%]" />
             <Image
               className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
               src={`/${movie.thumbnail.regular.large}`}

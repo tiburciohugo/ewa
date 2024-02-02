@@ -32,7 +32,7 @@ export default async function Trending() {
                   className="absolute bottom-[17%] left-[10%] text-gray-300 md:bottom-[17%] md:left-[5%]"
                 />
 
-                <BookmarkButton className="left-[85%]" />
+                <BookmarkButton movie={movie} className="left-[85%]" />
                 <h2 className="absolute bottom-0 left-4 pb-2 pl-2 text-sm font-bold md:text-2xl md:font-light">
                   {movie.title}
                 </h2>
