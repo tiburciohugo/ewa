@@ -18,6 +18,10 @@ export default function Recommended() {
     loadMovies();
   }, []);
 
+  const newTest = movies[0]?.thumbnail?.regular.large.startsWith(".");
+
+  console.log("newTest:", newTest);
+
   return (
     <section className="lg:max-w-xxl w-full px-4 py-6 text-white md:max-w-screen-md md:px-6 lg:pl-36">
       <h1 className="text-xl tracking-wider">Recommended for you</h1>
@@ -29,13 +33,13 @@ export default function Recommended() {
               movie={movie}
               className="left-[75%] md:left-[80%]"
             />
-            <Image
+            <img
               className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
-              src={movie.thumbnail.regular.large}
+              src={`${movie.thumbnail.regular.large.startsWith("/") ? "" : "."}${movie.thumbnail.regular.large}`}
               alt={movie.title}
               width={160}
               height={110}
-            ></Image>
+            ></img>
 
             <MovieInfo movie={movie} />
 

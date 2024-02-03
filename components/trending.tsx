@@ -23,6 +23,9 @@ export default function Trending() {
     loadMovies();
   }, []);
 
+  const test = movies[3];
+  console.log("movie:", test);
+
   const filteredMovies: Movie[] = movies.filter(
     (movie) => movie.isTrending === true,
   );
@@ -45,13 +48,13 @@ export default function Trending() {
                 <h2 className="absolute bottom-0 left-4 pb-2 pl-2 text-sm font-bold md:text-2xl md:font-light">
                   {movie.title}
                 </h2>
-                <Image
+                <img
                   className="cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px]"
-                  src={movie.thumbnail.trending.large}
+                  src={`${movie.thumbnail.trending.large.startsWith("/") ? "" : "."}${movie.thumbnail.trending.large}`}
                   alt={movie.title}
                   width={240}
                   height={140}
-                ></Image>
+                ></img>
               </div>
             </CarouselItem>
           ))}

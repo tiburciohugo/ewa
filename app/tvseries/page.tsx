@@ -31,13 +31,13 @@ export default function TVSeriesPage() {
               movie={movie}
               className="left-[75%] md:left-[80%]"
             />
-            <Image
+            <img
               className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
-              src={movie.thumbnail.regular.large}
+              src={`${movie.thumbnail.regular.large.startsWith("/") ? "" : "."}${movie.thumbnail.regular.large}`}
               alt={movie.title}
               width={160}
               height={110}
-            ></Image>
+            ></img>
 
             <div className="mt-2 flex items-center text-gray-400">
               <p>{movie.year}</p>
