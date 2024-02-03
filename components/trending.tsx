@@ -47,7 +47,7 @@ export default function Trending() {
                 </h2>
                 <Image
                   className="cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105 md:h-[230px] md:w-[470px]"
-                  src={`/${movie.thumbnail.trending.large}`}
+                  src={movie.thumbnail.trending.large}
                   alt={movie.title}
                   width={240}
                   height={140}

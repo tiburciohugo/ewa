@@ -36,7 +36,7 @@ export default function Movies() {
             />
             <Image
               className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
-              src={`/${movie.thumbnail.regular.large}`}
+              src={movie.thumbnail.regular.large}
               alt={movie.title}
               width={160}
               height={110}
