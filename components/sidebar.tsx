@@ -26,7 +26,7 @@ export default function Sidebar() {
         <ul className="flex space-x-4 lg:flex-col lg:justify-center lg:justify-items-center lg:space-x-0 lg:space-y-6">
           <li>
             <Link href="/">
-              <HomeIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white" />
+              <HomeIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white focus:text-white active:text-white" />
             </Link>
           </li>
           <li>

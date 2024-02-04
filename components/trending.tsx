@@ -23,9 +23,6 @@ export default function Trending() {
     loadMovies();
   }, []);
 
-  const test = movies[3];
-  console.log("movie:", test);
-
   const filteredMovies: Movie[] = movies.filter(
     (movie) => movie.isTrending === true,
   );

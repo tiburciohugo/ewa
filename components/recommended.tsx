@@ -18,10 +18,6 @@ export default function Recommended() {
     loadMovies();
   }, []);
 
-  const newTest = movies[0]?.thumbnail?.regular.large.startsWith(".");
-
-  console.log("newTest:", newTest);
-
   return (
     <section className="lg:max-w-xxl w-full px-4 py-6 text-white md:max-w-screen-md md:px-6 lg:pl-36">
       <h1 className="text-xl tracking-wider">Recommended for you</h1>
