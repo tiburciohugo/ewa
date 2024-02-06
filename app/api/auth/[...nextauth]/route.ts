@@ -51,4 +51,4 @@ const authOptions = {
 };
 
 export { authOptions as GET, authOptions as POST }
-export default NextAuth(authOptions);
+
