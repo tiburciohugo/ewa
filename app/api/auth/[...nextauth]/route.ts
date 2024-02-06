@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-export const authOptions = {
+const authOptions = {
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -50,4 +50,5 @@ export const authOptions = {
   callbacks: {},
 };
 
+export { authOptions as GET, authOptions as POST }
 export default NextAuth(authOptions);
