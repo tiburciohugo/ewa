@@ -28,8 +28,6 @@ class UserRepository {
     const collection = await this.collection;
     return collection.insertOne(doc);
   }
-
-  // Add more methods as needed...
 }
 
 export const userRepository = new UserRepository();

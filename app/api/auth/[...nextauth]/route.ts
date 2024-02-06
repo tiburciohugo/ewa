@@ -1,8 +1,8 @@
-import NextAuth from "next-auth";
+import { userRepository } from "@/lib/user";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 
-const authOptions = {
+const handler = {
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
@@ -26,12 +26,13 @@ const authOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-        const res = await fetch("/your/endpoint", {
-          method: "POST",
-          body: JSON.stringify(credentials),
-          headers: { "Content-Type": "application/json" },
-        });
+        const res = await userRepository.findOne({ email: credentials?.email });
         const user = await res.json();
+
+        // compare the password with the hashed password in the database
+        if (user && user.password === credentials?.password) {
+          return user;
+        }
 
         // If no error and we have user data, return it
         if (res.ok && user) {
@@ -46,9 +47,6 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
-  secret: process.env.AUTH_SECRET,
-  callbacks: {},
 };
 
-export { authOptions as GET, authOptions as POST }
-
+export { handler as GET, handler as POST };
