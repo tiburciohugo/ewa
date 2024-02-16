@@ -47,21 +47,21 @@ export default function RegisterForm() {
           type="email"
           name="email"
           id="email"
-          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 focus:outline-none"
+          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Email address"
         />
         <input
           type="password"
           name="password"
           id="password"
-          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 focus:outline-none"
+          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Password"
         />
         <input
           type="password"
           name="repeatpassword"
           id="repeatpassword"
-          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 focus:outline-none"
+          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Repeat Password"
         />
       </div>
@@ -69,7 +69,7 @@ export default function RegisterForm() {
       <div className="mt-12 flex flex-col space-y-2">
         <button
           type="submit"
-          className="text-medium rounded-xl bg-bright-red p-4 font-extralight text-white focus:outline-none"
+          className="text-medium rounded-xl bg-bright-red p-4 font-extralight text-white transition duration-200 ease-in-out hover:bg-white hover:text-black focus:outline-none"
         >
           Create an account
         </button>
@@ -78,7 +78,10 @@ export default function RegisterForm() {
         <p className="text-sm font-light text-white">
           Already have an account?
         </p>
-        <Link href="/login" className="font-extralight text-bright-red">
+        <Link
+          href="/login"
+          className="font-extralight text-bright-red transition duration-200 ease-in-out hover:text-white"
+        >
           Login
         </Link>
       </div>

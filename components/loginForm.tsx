@@ -21,7 +21,7 @@ export default function LoginForm() {
       },
       body: JSON.stringify({ email, password }),
     });
-    console.log(response);
+
     return response.json().then((data) => {
       if (data.error) {
         console.error(data.error);
@@ -43,14 +43,14 @@ export default function LoginForm() {
           type="email"
           name="email"
           id="email"
-          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 focus:outline-none"
+          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Email address"
         />
         <input
           type="password"
           name="password"
           id="password"
-          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 focus:outline-none"
+          className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Password"
         />
       </div>
@@ -58,7 +58,7 @@ export default function LoginForm() {
       <div className="mt-12 flex flex-col space-y-2">
         <button
           type="submit"
-          className="text-medium rounded-xl bg-bright-red p-4 font-extralight text-white focus:outline-none"
+          className="text-medium rounded-xl bg-bright-red p-4 font-extralight text-white transition duration-200 ease-in-out hover:bg-white hover:text-black  focus:outline-none"
         >
           Login to your account
         </button>
@@ -67,7 +67,10 @@ export default function LoginForm() {
         <p className="text-sm font-light text-white">
           Don&apos;t have an account?
         </p>
-        <Link href="/signup" className="font-extralight text-bright-red">
+        <Link
+          href="/signup"
+          className="font-extralight text-bright-red transition duration-200 ease-in-out  hover:text-white"
+        >
           Sign up
         </Link>
       </div>
