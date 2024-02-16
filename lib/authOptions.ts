@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import { userRepository } from "./user";
+import { compare } from "bcrypt";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -27,17 +28,19 @@ export const authOptions: NextAuthOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-        const res = await userRepository.findOne({ email: credentials?.email });
-        const user = await res.json();
+        const user = await userRepository.findOne({
+          email: credentials?.email,
+        });
 
-        // compare the password with the hashed password in the database
-        if (user && user.password === credentials?.password) {
-          return user;
-        }
+        const comparePassword = await compare(
+          credentials?.password as string,
+          user.password,
+        );
 
-        // If no error and we have user data, return it
-        if (res.ok && user) {
-          return user;
+        // Assuming user.password is a hashed password
+        if (user && comparePassword) {
+          // Return only the essential user information
+          return { id: user.id, name: user.name, email: user.email };
         }
         // Return null if user data could not be retrieved
         return null;
@@ -48,5 +51,26 @@ export const authOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? "",
     }),
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return user ? true : false;
+    },
+    async session({ session, user, token }) {
+      if (user) {
+        // Add the user information to the session
+        session.user = user;
+      }
+      return session;
+    },
+    async jwt({ token, user, account }) {
+      if (user) {
+        // Add the user information to the JWT token
+        token.user = user;
+      }
+      return token;
+    },
+  },
+  session: {
+    strategy: "jwt",
+  },
 };
-

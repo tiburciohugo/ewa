@@ -5,6 +5,7 @@ import HomeIcon from "../public/icon-nav-home.svg";
 import MoviesIcon from "../public/icon-nav-movies.svg";
 import TvIcon from "../public/icon-nav-tv-series.svg";
 import BookmarkIcon from "../public/icon-nav-bookmark.svg";
+import SignoutButton from "./ui/signoutButton";
 
 export default function Sidebar() {
   return (
@@ -46,6 +47,8 @@ export default function Sidebar() {
           </li>
         </ul>
       </div>
+
+      <SignoutButton />
 
       <Image
         src={"/image-avatar.png"}

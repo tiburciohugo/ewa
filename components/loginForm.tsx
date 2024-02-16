@@ -1,11 +1,11 @@
-"use client"
+"use client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import React from "react";
 
 export default function LoginForm() {
-    const router = useRouter();
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const target = e.target as typeof e.target & {
       email: { value: string };
@@ -14,22 +14,21 @@ export default function LoginForm() {
     const email = target.email.value;
     const password = target.password.value;
 
-    fetch("/api/auth/login", {
+    const response = await fetch(`/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.error) {
-          alert(data.error);
-          return;
-        }
-          alert("Logged in");
-          router.push("/");
-      });
+    });
+    console.log(response);
+    return response.json().then((data) => {
+      if (data.error) {
+        console.error(data.error);
+      } else {
+        router.push("/");
+      }
+    });
   };
 
   return (
@@ -37,9 +36,7 @@ export default function LoginForm() {
       onSubmit={handleSubmit}
       className="flex w-[327px] flex-col rounded-xl bg-navy-blue p-6"
     >
-      <Link href="/login">
-        <h1 className="text-3xl font-light text-white">Login</h1>
-      </Link>
+      <h1 className="text-3xl font-light text-white">Login</h1>
 
       <div className="mt-4 flex flex-col space-y-2">
         <input

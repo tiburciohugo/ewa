@@ -40,9 +40,7 @@ export default function RegisterForm() {
       onSubmit={handleSubmit}
       className="flex w-[327px] flex-col rounded-xl bg-navy-blue p-6"
     >
-      <Link href="/login">
-        <h1 className="text-3xl font-light text-white">Sign Up</h1>
-      </Link>
+      <h1 className="text-3xl font-light text-white">Sign Up</h1>
 
       <div className="mt-4 flex flex-col space-y-2">
         <input
