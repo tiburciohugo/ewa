@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import BookmarkButton from "./ui/bookmarkbutton";
 import MovieInfo from "./movieInfo";
 import fetchMovies from "@/lib/fetchMovies";
+import PlayButton from "./ui/playButton";
 
 export default function Recommended() {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -23,13 +24,19 @@ export default function Recommended() {
 
       <div className="grid w-full max-w-[1440px] grid-cols-2 gap-1 md:grid-cols-3 md:gap-4 lg:w-screen lg:grid-cols-4">
         {movies?.map((movie: Movie) => (
-          <div key={movie.title} className="relative mt-4 w-full max-w-[280px]">
+          <div
+            key={movie.title}
+            className="group relative mt-4 w-full max-w-[280px]"
+          >
             <BookmarkButton
               movie={movie}
               className="left-[75%] md:left-[80%]"
             />
+
+            <PlayButton top="30%" left="30%" />
+
             <img
-              className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out hover:scale-105"
+              className="min-h-[110px] w-full min-w-[140px] max-w-[280px] cursor-pointer rounded-xl object-cover transition duration-300 ease-in-out group-hover:opacity-70"
               src={`${movie.thumbnail.regular.large.startsWith("/") ? "" : "."}${movie.thumbnail.regular.large}`}
               alt={movie.title}
               width={160}
