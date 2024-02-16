@@ -42,7 +42,7 @@ export default function RegisterForm() {
     >
       <h1 className="text-3xl font-light text-white">Sign Up</h1>
 
-      <div className="mt-4 flex flex-col space-y-2">
+      <div className="mt-4 flex flex-col space-y-2 caret-bright-red">
         <input
           type="email"
           name="email"

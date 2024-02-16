@@ -2,7 +2,6 @@
 import { Movie } from "@/app/types/types";
 import React, { useEffect, useState } from "react";
 import BookmarkButton from "./ui/bookmarkbutton";
-import Image from "next/image";
 import MovieInfo from "./movieInfo";
 import fetchMovies from "@/lib/fetchMovies";
 

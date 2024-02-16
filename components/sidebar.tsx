@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -6,8 +7,11 @@ import MoviesIcon from "../public/icon-nav-movies.svg";
 import TvIcon from "../public/icon-nav-tv-series.svg";
 import BookmarkIcon from "../public/icon-nav-bookmark.svg";
 import SignoutButton from "./ui/signoutButton";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
+  const pathname = usePathname();
+
   return (
     <nav className="absolute top-0 flex w-full items-center justify-between bg-navy-blue p-4 md:m-[3%] md:max-w-[719px] md:rounded-xl lg:left-0 lg:my-4 lg:ml-4 lg:h-full lg:max-h-[960px] lg:w-24 lg:flex-col">
       <Link
@@ -27,22 +31,46 @@ export default function Sidebar() {
         <ul className="flex space-x-4 lg:flex-col lg:justify-center lg:justify-items-center lg:space-x-0 lg:space-y-6">
           <li>
             <Link href="/">
-              <HomeIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white focus:text-white active:text-white" />
+              <HomeIcon
+                className={
+                  pathname === "/"
+                    ? "text-white"
+                    : "text-steel-blue transition delay-200 ease-in-out hover:text-white focus:text-white active:text-white"
+                }
+              />
             </Link>
           </li>
           <li>
             <Link href={"/movies"}>
-              <MoviesIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white" />
+              <MoviesIcon
+                className={
+                  pathname === "/movies"
+                    ? "text-white"
+                    : "text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white"
+                }
+              />
             </Link>
           </li>
           <li>
             <Link href={"/tvseries"}>
-              <TvIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white" />
+              <TvIcon
+                className={
+                  pathname === "/tvseries"
+                    ? "text-white"
+                    : "text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white"
+                }
+              />
             </Link>
           </li>
           <li>
             <Link href={"/bookmarks"}>
-              <BookmarkIcon className="text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white" />
+              <BookmarkIcon
+                className={
+                  pathname === "/bookmarks"
+                    ? "text-white"
+                    : "text-steel-blue transition delay-200 ease-in-out hover:text-white active:text-white"
+                }
+              />
             </Link>
           </li>
         </ul>
