@@ -76,8 +76,6 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <SignoutButton />
-
       <Image
         src={"/image-avatar.png"}
         alt="avatar"
