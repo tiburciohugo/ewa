@@ -6,8 +6,13 @@ import HomeIcon from "../public/icon-nav-home.svg";
 import MoviesIcon from "../public/icon-nav-movies.svg";
 import TvIcon from "../public/icon-nav-tv-series.svg";
 import BookmarkIcon from "../public/icon-nav-bookmark.svg";
-import SignoutButton from "./ui/signoutButton";
 import { usePathname } from "next/navigation";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import LogoutForm from "./logoutForm";
 
 export default function Sidebar() {
   const pathname = usePathname();
@@ -76,13 +81,20 @@ export default function Sidebar() {
         </ul>
       </div>
 
-      <Image
-        src={"/image-avatar.png"}
-        alt="avatar"
-        width={30}
-        height={30}
-        className="rounded-full border-2 border-white"
-      />
+      <Popover>
+        <PopoverTrigger>
+          <Image
+            src={"/image-avatar.png"}
+            alt="avatar"
+            width={30}
+            height={30}
+            className="rounded-full border-2 border-white"
+          />
+        </PopoverTrigger>
+        <PopoverContent className="text-slate-100 bg-midnight-blue mt-4 ml-4 md:mr-2">
+          <LogoutForm />
+        </PopoverContent>
+      </Popover>
     </nav>
   );
 }
