@@ -17,3 +17,10 @@ export interface Movie {
   isBookmarked: boolean;
   isTrending: boolean;
 }
+
+export interface SessionData {
+  userId?: string;
+  username?: string;
+  img?: string;
+  isPro?: boolean;
+}
