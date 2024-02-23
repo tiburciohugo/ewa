@@ -23,4 +23,5 @@ export interface SessionData {
   username?: string;
   img?: string;
   isPro?: boolean;
+  isLoggedIn: boolean;
 }

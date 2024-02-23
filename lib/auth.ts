@@ -1,3 +1,4 @@
+import { SessionData } from "@/app/types/types";
 import bcrypt from "bcrypt";
 import { SessionOptions } from "iron-session";
 
@@ -20,4 +21,8 @@ export const sessionOptions: SessionOptions = {
     httpOnly: true,
     secure: process.env.VERCEL_ENV === "production",
   },
+};
+
+export const defaultSession: SessionData = {
+  isLoggedIn: false,
 };

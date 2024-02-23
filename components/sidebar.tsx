@@ -9,6 +9,7 @@ import {
 import LogoutForm from "./logoutForm";
 import { getSession } from "@/app/actions";
 import NavbarLinks from "./navbarLinks";
+import LoginButton from "./ui/loginButton";
 
 export default async function Sidebar() {
   const session = await getSession();
@@ -40,8 +41,9 @@ export default async function Sidebar() {
             className="rounded-full border-2 border-white"
           />
         </PopoverTrigger>
-        <PopoverContent className="text-slate-100 bg-midnight-blue mt-4 ml-4 md:mr-2">
-          <LogoutForm />
+        <PopoverContent className="ml-4 mt-4 bg-navy-blue text-slate-100 md:mr-2 hover:bg-midnight-blue">
+          {!session.isLoggedIn && <LoginButton />}
+          {session.isLoggedIn && <LogoutForm />}
         </PopoverContent>
       </Popover>
     </nav>
