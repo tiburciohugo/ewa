@@ -1,4 +1,5 @@
 import clientPromise from "@/app/config/database";
+import { User } from "@/app/types/types";
 import { MongoClient, Collection } from "mongodb";
 
 class UserRepository {
@@ -36,7 +37,10 @@ export async function fetchUser(email: string) {
   const client = await clientPromise;
   const db = client.db("ewa");
   const usersCollection = db.collection("Users");
-  const user = await usersCollection.findOne({ email });
+  const user: User | null = await usersCollection.findOne<User>({ email });
+  if (!user) {
+    return null;
+  }
   return user;
 }
 

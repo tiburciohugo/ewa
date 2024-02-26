@@ -45,6 +45,7 @@ export default function LoginForm() {
           id="email"
           className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Email address"
+          required
         />
         <input
           type="password"
@@ -52,6 +53,7 @@ export default function LoginForm() {
           id="password"
           className="text-md rounded-md border-b-2 border-slate-500 bg-navy-blue p-4 font-light text-white placeholder-gray-500 transition duration-200 ease-in-out hover:border-white hover:placeholder-white focus:border-white  focus:outline-none"
           placeholder="Password"
+          required
         />
       </div>
 
