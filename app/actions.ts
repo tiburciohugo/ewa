@@ -17,5 +17,9 @@ export const login = async () => {
   session.isLoggedIn = true;
   return session;
 };
-export const logout = async () => {};
+export const logout = async () => {
+  const session = await getSession();
+  session.isLoggedIn = false;
+  return session;
+};
 export const register = async () => {};
